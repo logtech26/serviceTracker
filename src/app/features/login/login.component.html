@@ -1,0 +1,7 @@
+<p>login works!</p>
+
+<input type="text" [(ngModel)]="username" placeholder="Username" id="">
+<input type="password" [(ngModel)]="password" placeholder="Password" id="">
+<button (click)="onLogin()">Login</button>
+  <h1>{{ message }}</h1>
+<p>{{ username | userFormat }}!</p>
