@@ -8,13 +8,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './features/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { UserFormatPipe } from './shared/pipes/user-format.pipe';
+import { UsergitComponent } from './features/usergit/usergit.component';
+import { UserService } from './services/user.service';
+import { CartoonService } from './services/cartoon.service';
+import { CartoonComponent } from './features/cartoon/cartoon.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserFormatPipe
+    UserFormatPipe,
+    UsergitComponent,
+    CartoonComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,7 @@ import { UserFormatPipe } from './shared/pipes/user-format.pipe';
     HttpClientModule,
     FormsModule
   ],
-  providers: [HealthSystemService],
+  providers: [HealthSystemService, UserService, CartoonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,41 +27,16 @@ export class AppComponent implements OnInit {
       this.posts = posts;
     });
 
-    this.characterService.getGamingCharacter(this.currentPage).subscribe(res => {
+    this.characterService.getGamingCharacter().subscribe(res => {
       console.log(res);
 
       this.characters = res.items;
     });
 
-    this.healthSystemService.getMockData(this.currentPage).subscribe((users: User[]) => {
-      console.log(users);
-      this.users = users;
-    });
 
-   this.loadCharacters();
     
   }
 
-
-// add logic to load more data 
-  loadCharacters(): void {
-  this.loading = true;
-
-  this.characterService.getGamingCharacter(this.currentPage)
-    .subscribe(res => {
-      this.characters = [...this.characters, ...res.items]; // append
-      this.totalPages = res.meta.totalPages;
-      this.loading = false;
-    });
-}
-
-
-loadMore(): void {
-  if (this.currentPage < this.totalPages) {
-    this.currentPage++;
-    this.loadCharacters();
-  }
-}
 
 
 

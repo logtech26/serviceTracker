@@ -18,6 +18,11 @@ export interface APiResponse {
   meta: any;
   links: any;
 }
+export interface CartoonCharacter {
+  items: Character[];
+  meta: any;
+  links: any;
+}
 
 
 export interface Post {

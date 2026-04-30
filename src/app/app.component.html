@@ -11,33 +11,11 @@
 </div> -->
 
 
-<!--characters.component.html -->
-<div *ngFor="let c of characters" class="character-card">
-  <h3>{{ c.name }}</h3>
-  <img [src]="c.image" width="120" />
-  <p>{{ c.race }} - {{ c.affiliation }}</p>
-</div> 
 
-<button 
-  *ngIf="currentPage < totalPages"
-  (click)="loadMore()"
-  [disabled]="loading">
 
-  {{ loading ? 'Loading...' : 'Load More' }}
-</button>
 <!-- <app-login/> -->
+<app-usergit/>
+<app-cartoon/>
 
 
-<!-- <div  *ngIf="users.length > 0" >
-    <h2>Users</h2>
-    <ul class="users">
-        <li *ngFor="let user of users">
-       <h4>{{ user.name }}</h4> 
-        <img src="{{ user.avatar }}" alt="{{ user.name }}" class="character-image">
-       
-        </li>
-    </ul>
-</div> -->
- 
 
-<app-about-component/>
