@@ -1,0 +1,147 @@
+<mat-toolbar color="primary" class="example-spacer">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>date_range</mat-icon>
+  </button>
+  <span>Service Tracker</span>
+  <span class="example-spacer"></span>
+  <button mat-button (click)="navigateToDashboard()">Dashboard</button>
+  <!-- <button mat-button (click)="navigateToProfile()">Profile</button> -->
+</mat-toolbar>
+<div class="header_control">
+  <h2>Settings</h2>
+
+  <main style="display: flex">
+    <mat-card>
+      <mat-card-title>
+        <h2>Schedule a Job</h2>
+      </mat-card-title>
+      <mat-card-content>
+        <h6>Here you can manage your scheduled jobs and view their status.</h6>
+        <mat-form-field appearance="outline">
+          <mat-label><h4>Status</h4></mat-label>
+          <mat-select disableRipple>
+            <mat-option value="1">Active</mat-option>
+            <mat-option value="2">Inactive</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label><h4>Job Type</h4></mat-label>
+          <mat-select disableRipple>
+            <mat-option value="1">Part Time</mat-option>
+            <mat-option value="2">Full Time</mat-option>
+            <mat-option value="3">Contractor</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label><h4>Schedule Date</h4></mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary">Save Job</button>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-title><h2>Create a Profile</h2></mat-card-title>
+      <mat-card-content>
+        <h6>Here you can create and manage your user profile.</h6>
+        <mat-form-field appearance="outline">
+          <mat-label><h4>First Name</h4></mat-label>
+          <input matInput placeholder="John" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label><h4>Last Name</h4></mat-label>
+          <input matInput placeholder="Doe" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label><h4>Title</h4></mat-label>
+          <input matInput placeholder="Software Engineer" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label><h4>Rate</h4></mat-label>
+          <input matInput placeholder="50.00" />
+        </mat-form-field>
+        <mat-radio-group aria-label="Select an option"
+          ><br />
+          <mat-radio-button value="1">Active</mat-radio-button>
+          <mat-radio-button value="2">Inactive</mat-radio-button>
+        </mat-radio-group>
+        <br />
+        <button mat-raised-button color="primary">Save Profile</button>
+      </mat-card-content>
+    </mat-card>
+  </main>
+</div>
+
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Full Name -->
+    <ng-container matColumnDef="fullname">
+      <th mat-header-cell *matHeaderCellDef>Full Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.fullname }}</td>
+    </ng-container>
+
+    <!-- Title -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <!-- Job Type -->
+    <ng-container matColumnDef="jobType">
+      <th mat-header-cell *matHeaderCellDef>Job Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.jobType }}</td>
+    </ng-container>
+
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+    </ng-container>
+
+    <!-- Project Number -->
+    <ng-container matColumnDef="projectNumber">
+      <th mat-header-cell *matHeaderCellDef>Project #</th>
+      <td mat-cell *matCellDef="let element">{{ element.projectNumber }}</td>
+    </ng-container>
+
+    <!-- Timesheet -->
+    <ng-container matColumnDef="timesheet">
+      <th mat-header-cell *matHeaderCellDef>Timesheet</th>
+      <td mat-cell *matCellDef="let element">{{ element.timesheet }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="pay">
+      <th mat-header-cell *matHeaderCellDef>Pay</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="getPayInfo(element) as pay">
+          <span *ngIf="pay.type === 'yearly'">
+            {{ pay.value | currency }} / year
+          </span>
+          <span *ngIf="pay.type === 'hourly'">
+            {{ pay.value | currency }} / hr
+          </span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <!-- Header & Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <!-- Paginator -->
+  <mat-paginator [pageSize]="5"></mat-paginator>
+</div>

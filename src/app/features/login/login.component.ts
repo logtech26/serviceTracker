@@ -1,39 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
-
-  username: string = '';
+export class LoginComponent implements OnInit {
+  constructor(private router: Router) {}
+  email: string = '';
   password: string = '';
-  message: string = '';
+  errorMessage: boolean = false;
+  adminEmail: string = 'admin@gmail.com';
+  admin: boolean = false;
+  regularUser: boolean = false;
 
-  showVal: boolean = false;
+  ngOnInit() {
 
-   clearInputs = () => {
-    this.username = '';
-    this.password = '';
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const adminUser = users.find((user: any) => user.email === this.adminEmail);
+    const nextId = 
+    users.length > 0
+         ? Math.max(...users.map((user: any) => Number(user.id) || 0 )) + 1
+         : 1;
+    if (!adminUser) {
+      users.push({ id: nextId, email: this.adminEmail, password: 'admin123' });
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    console.log('Users in localStorage:', adminUser);
+    
   }
 
   onLogin() {
-    // Implement your login logic here
-    if (this.username === 'admin' && this.password === 'password') {
-      this.message = 'Login successful!';
-     this.clearInputs();
-    } else if(this.message === '' && this.password === '') {
-      this.message = ' username & password must be filled.';
-      this.clearInputs();
-    }else{
-      this.message = 'Invalid username or password. Please try again.';
-      this.clearInputs();
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
 
+    const user = users.find(
+      (user: any) => user.email === this.email && user.password === this.password
+    );  
+
+    if (user) {
+      this.errorMessage = false;
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.errorMessage = true;
     }
-
   }
-
-  dataTest: string = '';
-
+   
 }

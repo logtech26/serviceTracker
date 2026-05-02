@@ -12,6 +12,31 @@ import { UsergitComponent } from './features/usergit/usergit.component';
 import { UserService } from './services/user.service';
 import { CartoonService } from './services/cartoon.service';
 import { CartoonComponent } from './features/cartoon/cartoon.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { AccordionsComponent } from './components/accordions/accordions.component';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
+import { CommonModule } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import { SignupComponent } from './features/signup/signup.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { SettingsComponent } from './features/settings/settings.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+
+
+
+
+
 
 
 @NgModule({
@@ -20,13 +45,34 @@ import { CartoonComponent } from './features/cartoon/cartoon.component';
     LoginComponent,
     UserFormatPipe,
     UsergitComponent,
-    CartoonComponent
+    CartoonComponent,
+    AccordionsComponent,
+    DashboardComponent,
+    SignupComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatButtonModule,
+    MatToolbarModule,
     HttpClientModule,
-    FormsModule
+   CdkAccordionModule,
+    MatIconModule,
+    FormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatRadioModule
+  
   ],
   providers: [HealthSystemService, UserService, CartoonService],
   bootstrap: [AppComponent]

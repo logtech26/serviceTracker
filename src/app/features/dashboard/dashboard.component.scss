@@ -1,0 +1,45 @@
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+
+.dash_btn{
+ display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_control{
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.table_control{
+  width: fit-content;
+}
+
+.dashboard_control{
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}

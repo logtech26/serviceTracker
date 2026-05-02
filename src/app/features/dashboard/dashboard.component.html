@@ -1,0 +1,121 @@
+<p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>date_range</mat-icon>
+    </button>
+    <span>Record Tracker</span>
+    <span class="example-spacer"></span>
+    <button mat-button (click)="navigateToSettings()">Settings</button>
+    <button mat-button (click)="navigateToProfile()">Profile</button>
+  </mat-toolbar>
+</p>
+
+<div class="header_control">
+  <h2>Welcome to Dashboard</h2>
+  <button mat-raised-button color="primary" (click)="logout()" class="dash_btn">
+    Logout
+  </button>
+</div>
+
+<div class="dashboard_control">
+  <form (ngSubmit)="addUser()">
+  <h3>Add User</h3>
+
+  <input
+    type="text"
+    [(ngModel)]="email"
+    name="email"
+    placeholder="Email"
+    required
+  />
+
+  <input
+    type="password"
+    [(ngModel)]="password"
+    name="password"
+    placeholder="Password"
+    required
+  />
+
+  <button mat-raised-button color="primary">Add User</button>
+</form>
+  <div class="table_control">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Users" #input />
+    </mat-form-field>
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- ID Column (hidden) -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+      </ng-container>
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+      </ng-container>
+  
+      <!-- Password Column -->
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef>Password</th>
+        <td mat-cell *matCellDef="let user">{{ user.password }}</td>
+      </ng-container>
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let user">
+          <button mat-button color="warn" (click)="deleteUser(user)">Delete</button>
+          <!-- <button mat-button color="warn">Delete</button> -->
+        </td>
+      </ng-container>
+  
+      <!-- Header Row -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+      <!-- Data Row -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <!-- ✅ Paginator -->
+    <mat-paginator
+      [pageSize]="5"
+      [pageSizeOptions]="[2, 4, 5, 10]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+  
+</div>
+<br /><br />
+
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Post Data </mat-panel-title>
+      <mat-panel-description> Post API </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> User Data </mat-panel-title>
+      <mat-panel-description> User API </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-usergit />
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Cartoon Data </mat-panel-title>
+      <mat-panel-description> Cartoon API </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-cartoon />
+  </mat-expansion-panel>
+</mat-accordion>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HealthSystemService } from './health-system.service';
 import { LoginComponent } from './features/login/login.component';
 import { Character, User } from './character.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,15 @@ export class AppComponent implements OnInit {
   totalPages = 0;
   loading = false;
 
-  constructor(private healthSystemService: HealthSystemService, private characterService: HealthSystemService) { }
+
+   
+
+  constructor(private healthSystemService: HealthSystemService, private characterService: HealthSystemService,private router: Router ) { }
+
+
+   logout() {
+    this.router.navigate(['/']);
+  }
 
   ngOnInit() {
     this.healthSystemService.getPosts().subscribe((posts: any[]) => {
@@ -36,8 +45,6 @@ export class AppComponent implements OnInit {
 
     
   }
-
-
 
 
 

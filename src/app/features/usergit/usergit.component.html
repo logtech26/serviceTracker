@@ -1,10 +1,16 @@
 <div *ngIf="users.length > 0">
-    <h1>Users</h1>
-    <ul class="users">
-        <li *ngFor="let u of users">
-             <h3>{{u.name}}</h3>
-             <img src="{{u.avatar}}" alt="{{u.name}}" class="character-image">
-        </li>
-    </ul>
-
+  <h1>Users</h1>
+  <ul class="users">
+    <li *ngFor="let u of users">
+      <h3>{{ u.name }}</h3>
+      <img src="{{ u.avatar }}" alt="{{ u.name }}" class="character-image"  class="character-image"/>
+    </li>
+  </ul>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator>
 </div>

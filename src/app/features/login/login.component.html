@@ -1,7 +1,52 @@
-<p>login works!</p>
+<mat-card class="login_card">
+  <div *ngIf="admin">
+    <h2>Admin Login</h2>
+    <p>Please login to your admin account</p>
+    <h1>Admin Panel</h1>
+  </div>
+  <div *ngIf="!admin">
+    <h2>Welcome Back!</h2>
+    <p>Please login to your account</p>
+  </div>
+  <h4>User Screen</h4>
+  <form (ngSubmit)="onLogin()">
+    <mat-form-field class="example-form-field">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="email"
+        name="email"
+        required
+      /> </mat-form-field
+    ><br /><br />
+    <mat-form-field class="example-form-field">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+    <br /><br />
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      class="example-form-field"
+    >
+      Login
+    </button>
+    <br />
+    <p>
+      Don't have an account?
+      <a routerLink="/signup"  mat-button color="primary">Signup</a>
+    </p>
 
-<input type="text" [(ngModel)]="username" placeholder="Username" id="">
-<input type="password" [(ngModel)]="password" placeholder="Password" id="">
-<button (click)="onLogin()">Login</button>
-  <h1>{{ message }}</h1>
-<p>{{ username | userFormat }}!</p>
+    <p *ngIf="errorMessage" style="color: red">Invalid credentials</p>
+
+    <span>username: admin@gmail.com | password: admin123</span>
+  </form>
+</mat-card>

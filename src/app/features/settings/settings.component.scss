@@ -1,0 +1,31 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  font-weight: 200;
+}
+
+
+
+.compact .mat-mdc-form-field-infix {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  min-height: 32px;
+}
+
+
+.mat-mdc-input-element {
+  font-size: 14px;
+}
+
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}

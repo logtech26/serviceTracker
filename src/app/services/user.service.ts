@@ -10,7 +10,9 @@ export class UserService {
 private userDataUrl = 'https://69ee06f39163f839f8926a1d.mockapi.io/api/v1/users';
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(this.userDataUrl)
+  getUsers(page: number, limit: number): Observable<User[]>{
+    return this.http.get<User[]>(
+     ` ${this.userDataUrl}?page=${page}&limit=${limit}`
+    )
   }
 }
