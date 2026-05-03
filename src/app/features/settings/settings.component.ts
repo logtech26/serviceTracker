@@ -1,7 +1,13 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
+import * as Selectors from '../../redux/app.selectors';
+import * as Actions from '../../redux/app.actions';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/character.model';
+import { UserProfile } from 'src/app/redux/app.state';
 
 export interface EmployeeProfile {
   fullname: string;
@@ -20,7 +26,44 @@ export interface EmployeeProfile {
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements AfterViewInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private store: Store,
+  ) {
+    this.jobs$ = this.store.select(Selectors.selectJobs);
+  }
+
+  jobs$: Observable<any[]>;
+
+  // form models
+  profile: UserProfile = {
+    firstName: '',
+    lastName: '',
+    title: '',
+    rate: 0,
+    isActive: false,
+  };
+
+  job = {
+    status: '',
+    jobType: '',
+    scheduleDate: null,
+  };
+
+  saveProfile() {
+    this.store.dispatch(Actions.saveProfile({ profile: this.profile }));
+    console.log(this.profile);
+  }
+
+  saveJob() {
+    this.store.dispatch(Actions.addJob({ job: this.job }));
+    console.log(this.job);
+    this.job = {
+      status: '',
+      jobType: '',
+      scheduleDate: null,
+    };
+  }
 
   displayedColumns: string[] = [
     'fullname',
@@ -40,10 +83,6 @@ export class SettingsComponent implements AfterViewInit {
 
   navigateToDashboard() {
     this.router.navigate(['/dashboard']);
-  }
-
-  navogateToProfile() {
-    this.router.navigate(['/profile']);
   }
 
   getPayInfo(employee: EmployeeProfile): { value: number; type: string } {

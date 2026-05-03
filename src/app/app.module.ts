@@ -32,6 +32,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import { Store, StoreModule } from '@ngrx/store';
+import { appReducer } from './redux/app.reducer';
 
 
 
@@ -71,7 +73,10 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    StoreModule.forRoot({
+      app: appReducer
+    })
   
   ],
   providers: [HealthSystemService, UserService, CartoonService],
