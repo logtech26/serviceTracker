@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private snackBar: MatSnackBar) {}
   email: string = '';
   password: string = '';
   errorMessage: boolean = false;
@@ -40,10 +41,12 @@ export class LoginComponent implements OnInit {
     );  
 
     if (user) {
-      this.errorMessage = false;
+    //  this.errorMessage = false;
+      this.snackBar.open('Login successful!', 'Close', { duration: 3000, horizontalPosition: 'center', verticalPosition: 'top', panelClass: ['success-snackbar'] });
       this.router.navigate(['/dashboard']);
     } else {
-      this.errorMessage = true;
+      //this.errorMessage = true;
+      this.snackBar.open('Invalid email or password.', 'Close', { duration: 3000, horizontalPosition: 'center', verticalPosition: 'top', panelClass: ['error-snackbar'] });
     }
   }
    

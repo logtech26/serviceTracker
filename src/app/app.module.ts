@@ -29,6 +29,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { SettingsComponent } from './features/settings/settings.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
@@ -76,7 +78,8 @@ import { appReducer } from './redux/app.reducer';
     MatRadioModule,
     StoreModule.forRoot({
       app: appReducer
-    })
+    }),
+    MatSnackBarModule
   
   ],
   providers: [HealthSystemService, UserService, CartoonService],

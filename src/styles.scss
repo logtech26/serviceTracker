@@ -1,2 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+.white-snackbar {
+  background-color: white !important;
+  color: black !important;
+  border-radius: 8px;
+}
+
+/* button inside snackbar */
+.white-snackbar .mat-mdc-snack-bar-action {
+  color: #1976d2 !important;
+}
+
+
+.white-snackbar.mat-mdc-snack-bar-container {
+  background: white !important;
+}
+
+.white-snackbar .mdc-snackbar__label {
+  color: black !important;
+}

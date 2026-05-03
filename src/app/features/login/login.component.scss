@@ -9,3 +9,14 @@
   align-items: center;
   height: 100vh;
 }
+
+.white-snackbar {
+  background-color: white !important;
+  color: black !important;
+  border-radius: 8px;
+}
+
+/* button inside snackbar */
+.white-snackbar .mat-mdc-snack-bar-action {
+  color: #1976d2 !important;
+}

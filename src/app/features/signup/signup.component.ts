@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +13,7 @@ export class SignupComponent {
   messageValidation = '';
   errormsg = false
   msg: string = '';
-  constructor(private router: Router) {}
+  constructor(private router: Router, private snackBar: MatSnackBar) {}
 
   signup() {
     const users = JSON.parse(localStorage.getItem('users') || '[]');
@@ -26,7 +27,8 @@ export class SignupComponent {
 
     if (!this.email || !this.password) {
       this.errormsg = true;
-      this.messageValidation = 'Please fill in all fields.';
+      //this.messageValidation = 'Please fill in all fields.';
+      this.snackBar.open('Please fill in all fields.', 'Close', { duration: 3000, horizontalPosition: 'center', verticalPosition: 'top' });
       return;
     }
 
