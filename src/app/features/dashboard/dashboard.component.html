@@ -1,4 +1,4 @@
-<p>
+<div class="container">
   <mat-toolbar color="primary">
     <button
       mat-icon-button
@@ -12,7 +12,6 @@
     <button mat-button (click)="navigateToSettings()">Settings</button>
     <button mat-button (click)="navigateToProfile()">Profile</button>
   </mat-toolbar>
-</p>
 
 <div class="header_control">
   <h2>Welcome to Dashboard</h2>
@@ -107,7 +106,8 @@
       <mat-panel-description> User API </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <app-usergit />
+    <app-usergit >
+    </app-usergit>
   </mat-expansion-panel>
 
   <mat-expansion-panel>
@@ -119,3 +119,5 @@
     <app-cartoon />
   </mat-expansion-panel>
 </mat-accordion>
+
+</div>
