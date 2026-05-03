@@ -1,17 +1,4 @@
 <div class="container">
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>date_range</mat-icon>
-    </button>
-    <span>Record Tracker</span>
-    <span class="example-spacer"></span>
-    <button mat-button (click)="navigateToSettings()">Settings</button>
-    <button mat-button (click)="navigateToProfile()">Profile</button>
-  </mat-toolbar>
 
 <div class="header_control">
   <h2>Welcome to Dashboard</h2>
@@ -41,9 +28,9 @@
   <button mat-raised-button color="primary">Add User</button>
 </form>
   <div class="table_control">
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Users" #input />
+    <mat-form-field appearance="outline">
+      <mat-label>Search by email</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="" #input />
     </mat-form-field>
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

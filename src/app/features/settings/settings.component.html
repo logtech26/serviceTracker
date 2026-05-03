@@ -1,19 +1,11 @@
 <div class="container">
-  <mat-toolbar color="primary" class="example-spacer">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>date_range</mat-icon>
-    </button>
-    <span>Service Tracker</span>
-    <span class="example-spacer"></span>
-    <button mat-button (click)="navigateToDashboard()">Dashboard</button>
-    <!-- <button mat-button (click)="navigateToProfile()">Profile</button> -->
-  </mat-toolbar>
+
   <div class="header_control">
     <h2>Settings</h2>
+     <span class="example-spacer"></span>
+    <button mat-raised-button (click)="navigateToDashboard()" color="primary">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard</button>
 
     <main class="card-wrapper">
       <mat-card class="responsive-card">

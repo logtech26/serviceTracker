@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HealthSystemService } from './health-system.service';
 import { LoginComponent } from './features/login/login.component';
 import { Character, User } from './character.model';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,15 +19,25 @@ export class AppComponent implements OnInit {
   currentPage = 1;
   totalPages = 0;
   loading = false;
+  isAuthPage = false;
 
+  constructor(
+    private healthSystemService: HealthSystemService,
+    private characterService: HealthSystemService,
+    private router: Router,
+  ) {
 
-   
+    // logic to determine if the current route is login or signup
+    // hide link to dashboard if on login or signup page
+    this.router.events
+    .pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+    )
+    .subscribe((event: NavigationEnd) => {
+      const url = event.urlAfterRedirects;
 
-  constructor(private healthSystemService: HealthSystemService, private characterService: HealthSystemService,private router: Router ) { }
-
-
-   logout() {
-    this.router.navigate(['/']);
+      this.isAuthPage = url.includes('/login') || url.includes('/signup');
+    });
   }
 
   ngOnInit() {
@@ -36,16 +47,24 @@ export class AppComponent implements OnInit {
       this.posts = posts;
     });
 
-    this.characterService.getGamingCharacter().subscribe(res => {
+    this.characterService.getGamingCharacter().subscribe((res) => {
       console.log(res);
 
       this.characters = res.items;
     });
-
-
-    
   }
 
+  logout() {
+    this.router.navigate(['/']);
+  }
 
+  // Method to navigate to the settings page
+  navigateToSettings() {
+    this.router.navigate(['/settings']);
+  }
 
+  // Method to navigate to the profile page
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
+  }
 }

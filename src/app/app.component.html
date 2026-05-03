@@ -1,4 +1,19 @@
 
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>date_range</mat-icon>
+    </button>
+    <span>Record Tracker</span>
+    <span class="example-spacer"></span>
+    <ng-container *ngIf="!isAuthPage">
+      <button mat-button (click)="navigateToSettings()">Settings</button>
+      <button mat-button (click)="navigateToProfile()">Profile</button>
+    </ng-container>
+  </mat-toolbar>
 
     
 
