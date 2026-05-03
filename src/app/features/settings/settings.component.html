@@ -1,3 +1,4 @@
+<div class="container">
 <mat-toolbar color="primary" class="example-spacer">
   <button
     mat-icon-button
@@ -14,8 +15,8 @@
 <div class="header_control">
   <h2>Settings</h2>
 
-  <main style="display: flex">
-    <mat-card>
+  <main class="card-wrapper">
+    <mat-card class="responsive-card">
       <mat-card-title>
         <h2>Schedule a Job</h2>
       </mat-card-title>
@@ -51,7 +52,7 @@
         <button mat-raised-button color="primary">Save Job</button>
       </mat-card-content>
     </mat-card>
-    <mat-card>
+    <mat-card class="responsive-card">
       <mat-card-title><h2>Create a Profile</h2></mat-card-title>
       <mat-card-content>
         <h6>Here you can create and manage your user profile.</h6>
@@ -144,4 +145,5 @@
 
   <!-- Paginator -->
   <mat-paginator [pageSize]="5"></mat-paginator>
+</div>
 </div>

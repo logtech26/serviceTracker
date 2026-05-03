@@ -4,7 +4,7 @@
 }
 
 /* Toolbar spacing */
-.spacer {
+.example-spacer {
   flex: 1 1 auto;
 }
 
@@ -47,6 +47,10 @@
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
+
+  .example-spacer {
+   display: contents;
+  }
 
   .dashboard_control {
     flex-direction: column;

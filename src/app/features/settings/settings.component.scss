@@ -1,31 +1,68 @@
+/* Toolbar */
+.toolbar {
+  display: flex;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  margin: 0;
-  font-weight: 200;
+/* Layout */
+.container {
+  padding: 16px;
 }
 
-
-
-.compact .mat-mdc-form-field-infix {
-  padding-top: 4px;
-  padding-bottom: 4px;
-  min-height: 32px;
+.card-wrapper {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap; /* key for responsiveness */
 }
 
-
-.mat-mdc-input-element {
-  font-size: 14px;
+/* Cards */
+.responsive-card {
+  flex: 1 1 48%;
+  min-width: 300px;
 }
 
+/* Full width inputs */
+.full-width {
+  width: 100%;
+  margin-bottom: 12px;
+}
 
+/* Table responsiveness */
 .table-container {
-  width: 100%;
-  overflow-x: auto;
+  margin-top: 20px;
+  overflow-x: auto; /* prevents breaking on small screens */
 }
 
-table {
-  width: 100%;
+.responsive-table {
+  min-width: 600px;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .card-wrapper {
+    flex-direction: column;
+  }
+
+  .responsive-card {
+    flex: 1 1 100%;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* 📱 Small phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
