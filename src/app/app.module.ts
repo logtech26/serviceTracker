@@ -30,12 +30,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { SettingsComponent } from './features/settings/settings.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import { Store, StoreModule } from '@ngrx/store';
 import { appReducer } from './redux/app.reducer';
+import { NgElementComponent } from './components/ng-element/ng-element.component';
+import { DirectivesComponent } from './components/ng-element/directives/directives.component';
+import { PipesComponent } from './components/ng-element/pipes/pipes.component';
+import { ServiceComponent } from './components/ng-element/service/service.component';
+import { DependencyInjectionComponent } from './components/ng-element/dependency-injection/dependency-injection.component';
+import { RoutingComponent } from './components/ng-element/routing/routing.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -53,7 +61,13 @@ import { appReducer } from './redux/app.reducer';
     AccordionsComponent,
     DashboardComponent,
     SignupComponent,
-    SettingsComponent
+    SettingsComponent,
+    NgElementComponent,
+    DirectivesComponent,
+    PipesComponent,
+    ServiceComponent,
+    DependencyInjectionComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +93,10 @@ import { appReducer } from './redux/app.reducer';
     StoreModule.forRoot({
       app: appReducer
     }),
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatStepperModule,
+    MatDialogModule
   
   ],
   providers: [HealthSystemService, UserService, CartoonService],

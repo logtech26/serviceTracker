@@ -1,88 +1,135 @@
 <div class="container">
-
   <div class="header_control">
     <h2>Settings</h2>
-     <span class="example-spacer"></span>
+    <span class="example-spacer"></span>
     <button mat-raised-button (click)="navigateToDashboard()" color="primary">
       <mat-icon>dashboard</mat-icon>
-      Dashboard</button>
+      Dashboard
+    </button>
 
-    <main class="card-wrapper">
-      <mat-card class="responsive-card">
-        <mat-card-title>
-          <h2>Schedule a Job</h2>
-        </mat-card-title>
-        <mat-card-content>
-          <h6>
-            Here you can manage your scheduled jobs and view their status.
-          </h6>
-          <mat-form-field appearance="outline">
-            <mat-label><h4>Status</h4></mat-label>
-            <mat-select [(ngModel)]="job.status" disableRipple>
-              <mat-option value="Active">Active</mat-option>
-              <mat-option value="Inactive">Inactive</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br />
-          <mat-form-field appearance="outline">
-            <mat-label><h4>Job Type</h4></mat-label>
-            <mat-select [(ngModel)]="job.jobType" disableRipple>
-              <mat-option value="Part-time">Part Time</mat-option>
-              <mat-option value="Full-time">Full Time</mat-option>
-              <mat-option value="Contractor">Contractor</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br />
-          <mat-form-field appearance="outline">
-            <mat-label><h4>Schedule Date</h4></mat-label>
-            <input matInput [(ngModel)]="job.scheduleDate" [matDatepicker]="picker" />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <br />
-          <button mat-raised-button color="primary" (click)="saveJob()">Save Job</button>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="responsive-card">
-        <mat-card-title><h2>Create a Profile</h2></mat-card-title>
-        <mat-card-content>
-          <h6>Here you can create and manage your user profile.</h6>
-          <mat-form-field appearance="outline">
-            <mat-label><h4>First Name</h4></mat-label>
-            <input matInput [(ngModel)]="profile.firstName" placeholder="John" />
-          </mat-form-field>
-          <br />
-          <mat-form-field appearance="outline">
-            <mat-label><h4>Last Name</h4></mat-label>
-            <input matInput [(ngModel)]="profile.lastName" placeholder="Doe" />
-          </mat-form-field>
-          <br />
-          <mat-form-field appearance="outline">
-            <mat-label><h4>Title</h4></mat-label>
-            <input matInput [(ngModel)]="profile.title" placeholder="Software Engineer" />
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label><h4>Rate</h4></mat-label>
-            <input matInput [(ngModel)]="profile.rate" type="number" placeholder="50.00" />
-          </mat-form-field>
-          <mat-radio-group [(ngModel)]="profile.isActive" aria-label="Select an option"
-            ><br />
-            <mat-radio-button [value]="true">Active</mat-radio-button>
-            <mat-radio-button [value]="false">Inactive</mat-radio-button>
-          </mat-radio-group>
-          <br />
-          <button mat-raised-button color="primary" (click)="saveProfile()">
-            Save Profile
-          </button>
-        </mat-card-content>
-      </mat-card>
+    <main>
+      <mat-stepper orientation="horizontal" class="card-wrapper">
+        <mat-step>
+          <ng-template matStepLabel>Schedule Job</ng-template>
+          <ng-template matStepContent>
+            <mat-card class="responsive-card">
+              <mat-card-title>
+               
+              </mat-card-title>
+              <mat-card-content>
+                <h6>
+                  Here you can manage your scheduled jobs and view their status.
+                </h6>
+                <mat-form-field appearance="outline">
+                  <mat-label><h4>Status</h4></mat-label>
+                  <mat-select [(ngModel)]="job.status" disableRipple>
+                    <mat-option value="Active">Active</mat-option>
+                    <mat-option value="Inactive">Inactive</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label><h4>Job Type</h4></mat-label>
+                  <mat-select [(ngModel)]="job.jobType" disableRipple>
+                    <mat-option value="Part-time">Part Time</mat-option>
+                    <mat-option value="Full-time">Full Time</mat-option>
+                    <mat-option value="Contractor">Contractor</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label><h4>Schedule Date</h4></mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="job.scheduleDate"
+                    [matDatepicker]="picker"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <br />
+                <button mat-raised-button color="primary" (click)="saveJob()">
+                  Save Job
+                </button>
+              </mat-card-content>
+            </mat-card>
+            <button mat-button matStepperNext>Next</button>
+          </ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Create Profile</ng-template>
+          <ng-template matStepContent>
+            <mat-card class="responsive-card">
+              <mat-card-title></mat-card-title>
+              <mat-card-content>
+                <h6>Here you can create and manage your user profile.</h6>
+                <mat-form-field appearance="outline">
+                  <mat-label><h4>First Name</h4></mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="profile.firstName"
+                    placeholder="John"
+                  />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label><h4>Last Name</h4></mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="profile.lastName"
+                    placeholder="Doe"
+                  />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label><h4>Title</h4></mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="profile.title"
+                    placeholder="Software Engineer"
+                  />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label><h4>Rate</h4></mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="profile.rate"
+                    type="number"
+                    placeholder="50.00"
+                  />
+                </mat-form-field>
+                <mat-radio-group
+                  [(ngModel)]="profile.isActive"
+                  aria-label="Select an option"
+                  ><br />
+                  <mat-radio-button [value]="true">Active</mat-radio-button>
+                  <mat-radio-button [value]="false">Inactive</mat-radio-button>
+                </mat-radio-group>
+                <br />
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="saveProfile()"
+                >
+                  Save Profile
+                </button>
+              </mat-card-content>
+            </mat-card>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Step 3</ng-template>
+          <p>This content was rendered eagerly</p>
+          <button mat-button matStepperPrevious>Back</button>
+        </mat-step>
+      </mat-stepper>
     </main>
   </div>
-
-  
 
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

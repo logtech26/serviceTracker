@@ -67,4 +67,9 @@ export class AppComponent implements OnInit {
   navigateToProfile() {
     this.router.navigate(['/profile']);
   }
+
+  // Method to navigate to the ng-element page
+  navigateToNgElement() {
+    this.router.navigate(['/ngelement']);
+  }
 }

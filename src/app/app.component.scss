@@ -61,6 +61,19 @@ ul,li{
 
 @media (max-width: 768px) {
 
+  .links {
+   
+    flex-direction: column;
+    align-items: center;
+    button{
+      margin-bottom: 10px;
+      font-size: 9px;
+      color: rgb(248, 242, 242);
+      line-height: 155px;
+    }
+  }
+
+
   .example-spacer {
    display: contents;
   }

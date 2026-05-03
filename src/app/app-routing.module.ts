@@ -4,6 +4,7 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { LoginComponent } from './features/login/login.component';
 import { SignupComponent } from './features/signup/signup.component';
 import { SettingsComponent } from './features/settings/settings.component';
+import { NgElementComponent } from './components/ng-element/ng-element.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // ✅ default route
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'dashboard', component: DashboardComponent },
   {path: 'settings', component: SettingsComponent},
+  {path: 'ngelement', component: NgElementComponent}
 ];
 
 @NgModule({

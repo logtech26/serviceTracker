@@ -9,9 +9,13 @@
     </button>
     <span>Record Tracker</span>
     <span class="example-spacer"></span>
-    <ng-container *ngIf="!isAuthPage">
-      <button mat-button (click)="navigateToSettings()">Settings</button>
-      <button mat-button (click)="navigateToProfile()">Profile</button>
+    <ng-container *ngIf="!isAuthPage" >
+      <div class="links">
+
+        <button mat-button (click)="navigateToSettings()">Settings</button> |
+        <!-- <button mat-button (click)="navigateToProfile()">Profile</button> -->
+        <button mat-button (click)="navigateToNgElement()">AngularCore</button>
+      </div>
     </ng-container>
   </mat-toolbar>
 
