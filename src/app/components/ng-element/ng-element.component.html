@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <header>
+    <h1>Learn Angular</h1>
+   
+  </header>
+
+  <main class="content">
+    <mat-card class="card">
+        <mat-card-title>Directives</mat-card-title>
+        <mat-card-content>
+            <p>Directives in Angular are used to extend the functionality of existing elements.</p>
+            <span>eg: *ngIf</span>
+            <span>eg: *ngFor</span>
+            <span>eg: *ngSwitch</span>
+            <span></span> <br>
+            <button  mat-raised-button color="primary" (click)="openDialog()">Use Case</button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+        <mat-card-title>Pipes</mat-card-title>
+        <mat-card-content>
+            <p>Pipes in Angular are used to transform data before displaying it in the template.</p>
+            <span>eg: |uppercase</span>
+            <span>eg: customPipe </span>
+            <br>
+            <button  mat-raised-button color="primary">Use Case</button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+        <mat-card-title>Services</mat-card-title>
+        <mat-card-content>
+            <p>Services in Angular are used to share data and functionality across components.</p>
+            <span>eg: DataService</span>
+                <span>eg: AuthService</span>
+                    <span>eg: NotificationService</span><br>
+                    <button  mat-raised-button color="primary">Use Case</button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+        <mat-card-title>Dependency Injection</mat-card-title>
+        <mat-card-content>
+            <p>Dependency Injection in Angular is a design pattern used to manage dependencies between components and services.</p>
+                <span>eg: constructor(private dataService: DataService) </span>
+                <!-- <span>eg: @Injectable({ providedIn: 'root' })</span> -->
+                 <span></span>
+                 <button  mat-raised-button color="primary">Use Case</button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+        <mat-card-title>Routing</mat-card-title>
+        <mat-card-content>
+            <p>Routing in Angular is used to navigate between different views in the application.</p>
+            <span>eg: routerLink</span>
+            <span>eg: RouterModule.forRoot(routes)</span>
+             <span></span>
+             <button  mat-raised-button color="primary">Use Case</button>
+        </mat-card-content>
+    </mat-card>
+  </main>
+</div>
